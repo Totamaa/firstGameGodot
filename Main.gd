@@ -6,6 +6,8 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Music.volume_db = -15
+	$DeathSound.volume_db = -15
 	randomize()
 
 
@@ -28,22 +30,21 @@ func new_game():
 	$HUD.show_message("Get Ready")
 	$Music.play()
 
-
-
+# Faire spawner les monstres
 func _on_MobTimer_timeout():
-	# Choose a random location on Path2D.
+	# On choisit une location random de notre cadre
 	$MobPath/MobSpawnLocation.offset = randi()
-	# Create a Mob instance and add it to the scene.
+	# On crée un mob et on l'ajoute a la scène
 	var mob = Mob.instance()
 	add_child(mob)
-	# Set the mob's direction perpendicular to the path direction.
+	# On oriente le mob vers le centre
 	var direction = $MobPath/MobSpawnLocation.rotation + PI / 2
-	# Set the mob's position to a random location.
+	# on met le monstre dans une position random
 	mob.position = $MobPath/MobSpawnLocation.position
-	# Add some randomness to the direction.
+	# on ajoute un angle (en radiant) au mosntre 
 	direction += rand_range(-PI / 4, PI / 4)
 	mob.rotation = direction
-	# Set the velocity (speed & direction).
+	# On donne la velocité au monstre (vitesse et direction)
 	mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
@@ -57,5 +58,14 @@ func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
 
-	
 
+
+func _on_HUD_sound_on():
+	$Music.volume_db = -15
+	$DeathSound.volume_db = -15
+
+
+
+func _on_HUD_sound_off():
+	$Music.volume_db = -80
+	$DeathSound.volume_db = -80

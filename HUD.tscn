@@ -27,11 +27,11 @@ __meta__ = {
 }
 
 [node name="Message" type="Label" parent="."]
-anchor_top = 0.5
+anchor_top = 0.281
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -68.7083
-margin_bottom = 84.2917
+margin_top = -0.118164
+margin_bottom = -4.79816
 custom_fonts/font = SubResource( 1 )
 text = "Dodge the creeps!"
 align = 1
@@ -42,12 +42,12 @@ __meta__ = {
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.333
-anchor_top = 0.722
-anchor_right = 0.667
-anchor_bottom = 0.861
-margin_left = 0.160004
-margin_top = 0.159973
-margin_right = -0.160034
+anchor_top = 0.574
+anchor_right = 0.687
+anchor_bottom = 0.686
+margin_left = -4.84
+margin_top = -0.279999
+margin_right = 0.23999
 margin_bottom = 0.0799561
 custom_fonts/font = SubResource( 1 )
 shortcut_in_tooltip = false
@@ -61,5 +61,65 @@ __meta__ = {
 wait_time = 2.0
 one_shot = true
 
+[node name="Settings" type="Button" parent="."]
+anchor_left = 0.214
+anchor_top = 0.735
+anchor_right = 0.809
+anchor_bottom = 0.848
+margin_left = -0.160683
+margin_top = 0.311951
+margin_right = 0.239319
+margin_bottom = -0.0480957
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="soundsButton" type="CheckButton" parent="."]
+margin_left = 291.0
+margin_top = 257.0
+margin_right = 369.0
+margin_bottom = 340.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 1 )
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sounds" type="Label" parent="."]
+anchor_left = 0.087
+anchor_top = 0.412
+anchor_right = 0.607
+anchor_bottom = 0.533
+margin_left = -1.30572
+margin_top = 0.0247498
+margin_right = 0.0942688
+margin_bottom = 11.9047
+custom_fonts/font = SubResource( 1 )
+text = "Sound :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitSettings" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -105.5
+margin_top = -220.0
+margin_right = 105.5
+margin_bottom = -121.0
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="soundsButton" to="." method="_on_soundsButton_pressed"]
+[connection signal="pressed" from="exitSettings" to="." method="_on_exitSettings_pressed"]
